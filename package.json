@@ -1,0 +1,32 @@
+{
+  "name": "geometry.js",
+  "version": "0.1.0",
+  "description": "A collection of ES6 classes for simple geometric objects and calculations",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/radify/geometry.js.git"
+  },
+  "keywords": [
+    "geometry",
+    "math",
+    "graph",
+    "graphing"
+  ],
+  "author": "Nate Abele <nate@radify.io>",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/radify/geometry.js/issues"
+  },
+  "homepage": "https://github.com/radify/geometry.js",
+  "devDependencies": {
+    "babel": "^5.1.10",
+    "gulp-babel": "^5.1.0",
+    "gulp-jasmine": "^2.0.1",
+    "gulp-uglify": "^1.2.0"
+  },
+  "dependencies": {}
+}
