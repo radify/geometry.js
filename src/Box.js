@@ -55,7 +55,7 @@ export default class Box {
     ];
   }
 
-  pad(size: number) {
+  pad(size: number): Box {
     return new Box(
       this.origin.add(new Point(-size, -size)),
       this.size.add(new Size(size, size))
