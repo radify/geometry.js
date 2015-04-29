@@ -42,7 +42,7 @@ export default class Box {
         bottomRight = topRight.add(new Point(0, this.height)),
         bottomLeft = topLeft.add(new Point(0, this.height));
 
-    return [topLeft, topRight, bottomLeft, bottomRight];
+    return [topLeft, topRight, bottomRight, bottomLeft];
   }
 
   // @TODO: Move to Point
