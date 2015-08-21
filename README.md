@@ -9,12 +9,12 @@ of geometry operations across several dependent libraries, including [radify/Pat
 
 ## Setup
 
-You can grab it directly from GitHub using NPM or JSPM:
+You can grab it directly from NPM or JSPM:
 
 ```bash
-npm install https://github.com/radify/geometry.js
+npm install geometry.js
 # or
-jspm install https://github.com/radify/geometry.js
+jspm install geometry.js
 ```
 
 Then:
