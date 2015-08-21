@@ -9,8 +9,8 @@ describe("Box", () => {
       expect((new Box(new Point(1, 1), new Size(100, 100))).corners()).toEqual([
         new Point(1, 1),
         new Point(101, 1),
+        new Point(101, 101),
         new Point(1, 101),
-        new Point(101, 101)
       ]);
     });
   });
@@ -50,9 +50,9 @@ describe("Box", () => {
       var box = new Box(new Point(1, 1), new Size(100, 100));
       expect(box.edges().map(line => line.toPairs())).toEqual([
         [1,   1,  101,   1],
-        [1,   1,    1, 101],
         [1,   1,  101, 101],
-        [101, 101,  1,   1]
+        [1,   1,    1, 101],
+        [1, 101,    1,   1]
       ]);
     });
   });

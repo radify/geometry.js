@@ -1,6 +1,6 @@
 {
   "name": "geometry.js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A collection of ES6 classes for simple geometric objects and calculations",
   "main": "dist/geometry.min.js",
   "scripts": {
@@ -23,13 +23,12 @@
   },
   "homepage": "https://github.com/radify/geometry.js",
   "devDependencies": {
-    "babel": "^5.1.10",
-    "gulp-babel": "^5.1.0",
+    "babel": "^5.8.21",
+    "gulp-babel": "^5.2.1",
     "gulp-concat": "^2.5.2",
     "gulp-jasmine": "^2.0.1",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^1.2.0",
     "yargs": "^3.7.2"
-  },
-  "dependencies": {}
+  }
 }

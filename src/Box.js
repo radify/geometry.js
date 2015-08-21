@@ -2,9 +2,7 @@ import Point from "./Point";
 import Line from "./Line";
 import Size from "./Size";
 
-var prop = (name) => {
-  return (obj) => obj[name];
-};
+var prop = (name) => (obj) => obj[name];
 
 export default class Box {
 

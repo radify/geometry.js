@@ -1,14 +1,12 @@
-import Box from "./Box";
+export default class Point {
 
-class Point {
-
-  constructor(x: number = 0, y: number = 0) {
-    var [_x, _y] = [x, y];
-    Object.assign(this, { _x, _y });
+  constructor(_x: number = 0, _y: number = 0) {
+    Object.freeze(Object.assign(this, { _x, _y }));
   }
 
-  add(point: Point): Point {
-  	return new Point(this._x + point.x, this._y + point.y);
+  add(point): Point {
+    var adding = Point.instance(point);
+    return new Point(this._x + adding.x, this._y + adding.y);
   }
 
   subtract(point: Point): Point {
@@ -25,10 +23,6 @@ class Point {
 
   invert(): Point {
     return new Point(-this._x, -this._y);
-  }
-
-  isIn(box: Box): boolean {
-    return box.contains(this);
   }
 
   distance(point: Point): number {
@@ -54,15 +48,15 @@ class Point {
     return 180 * ((rad < 0) ? (2 * Math.PI + rad) : rad) / Math.PI;
   }
 
-  get x() {
+  get x(): number {
   	return this._x;
   }
 
-  get y() {
+  get y(): number {
   	return this._y;
   }
 
-  get transform() {
+  get transform(): string {
     return `translate(${this._x}, ${this._y})`;
   }
 
@@ -74,9 +68,14 @@ class Point {
     return `${this._x}, ${this._y}`;
   }
 
-  static fromString(str) {
+  static instance(x, y): Point {
+    if (x instanceof Point) return x;
+    if (x && x.hasOwnProperty('x')) return new Point(x.x, x.y);
+    if (x && x.length && x.length >= 2) return new Point(x[0], x[1]);
+    return new Point(x, y);
+  }
+
+  static fromString(str): Point {
     return new Point(...(str.split(',').map(val => parseInt(val, 10))));
   }
 }
-
-export default Point;

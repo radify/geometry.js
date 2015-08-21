@@ -18,7 +18,7 @@ export default class Line {
   }
 
   add(offset: Point): Line {
-    return 
+    return new Line(this.origin.add(offset), this.destination.add(offset));
   }
 
   crosses(line: Line): boolean {
