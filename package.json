@@ -1,6 +1,6 @@
 {
   "name": "geometry.js",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A collection of ES6 classes for simple geometric objects and calculations",
   "main": "dist/geometry.min.js",
   "scripts": {
