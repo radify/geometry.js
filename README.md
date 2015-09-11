@@ -1,3 +1,5 @@
+[![Travis Build Status](https://travis-ci.org/radify/geometry.js.svg)](https://travis-ci.org/radify/geometry.js?branch=master)
+
 # Geometry.js
 
 A collection of ES6 classes for simple geometric objects and calculations.
