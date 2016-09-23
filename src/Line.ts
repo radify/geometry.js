@@ -1,13 +1,12 @@
-import Point from "./Point";
-import Size from "./Size";
-import Box from "./Box";
+import Point from './Point';
+import Size from './Size';
+import Box from './Box';
 
 export default class Line {
 
-  constructor(origin: Point, destination: Point) {
-    Object.assign(this, { origin, destination });
-    this._svgTpl = (o, d) => `M ${o.x} ${o.y} L ${d.x} ${d.y}`;
-  }
+  private _svgTpl = (o, d) => `M ${o.x} ${o.y} L ${d.x} ${d.y}`;
+
+  constructor(public origin: Point, public destination: Point) {}
 
   from(origin: Point): Line {
     return new Line(origin, this.destination);

@@ -1,14 +1,12 @@
-import Point from "./Point";
-import Line from "./Line";
-import Size from "./Size";
+import Point from './Point';
+import Line from './Line';
+import Size from './Size';
 
 var prop = (name) => (obj) => obj[name];
 
 export default class Box {
 
-  constructor(origin: Point, size: Size) {
-    Object.assign(this, { origin, size });
-  }
+  constructor(public origin: Point, public size: Size) {}
 
   get x() {
   	return this.origin.x;
@@ -63,11 +61,11 @@ export default class Box {
   // @TODO: Determine some kind of generalized algorthim for closed list walking
   edges() {
     return this.corners().reduce((prev, cur, idx, array) => {
-      if (!prev.last) {
-        prev.last = cur;
+      if (!(<any> prev).last) {
+        (<any> prev).last = cur;
         return prev;
       }
-      prev.push(new Line(prev.last, cur));
+      prev.push(new Line((<any> prev).last, cur));
 
       if (idx === array.length - 1) prev.push(new Line(cur, array[0]));
       return prev;
