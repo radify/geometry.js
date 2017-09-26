@@ -2,12 +2,12 @@ import Point from "./Point";
 import Line from "./Line";
 import Size from "./Size";
 
-var prop = (name) => (obj) => obj[name];
+var prop = (name: string) => (obj: any) => obj[name];
 
 export default class Box {
 
-  constructor(origin: Point, size: Size) {
-    Object.assign(this, { origin, size });
+  constructor(public origin: Point, public size: Size) {
+    Object.freeze(this);
   }
 
   get x() {
@@ -63,11 +63,11 @@ export default class Box {
   // @TODO: Determine some kind of generalized algorthim for closed list walking
   edges() {
     return this.corners().reduce((prev, cur, idx, array) => {
-      if (!prev.last) {
-        prev.last = cur;
+      if (!(<any> prev).last) {
+        (<any> prev).last = cur;
         return prev;
       }
-      prev.push(new Line(prev.last, cur));
+      prev.push(new Line((<any> prev).last, cur));
 
       if (idx === array.length - 1) prev.push(new Line(cur, array[0]));
       return prev;
@@ -82,7 +82,7 @@ export default class Box {
   }
 
   get overlaps() {
-    return (box) => {
+    return (box: Box) => {
       var p1 = this.origin, p2 = this.bound, p3 = box.origin, p4 = box.bound;
       return !(p2.y < p3.y || p1.y > p4.y || p2.x < p3.x || p1.x > p4.x);
     };

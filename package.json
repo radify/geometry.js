@@ -4,7 +4,8 @@
   "description": "A collection of ES6 classes for simple geometric objects and calculations",
   "main": "dist/geometry.min.js",
   "scripts": {
-    "test": "gulp test"
+    "build": "webpack",
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",
@@ -17,18 +18,22 @@
     "graphing"
   ],
   "author": "Nate Abele <nate@radify.io>",
-  "license": "BSD",
+  "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/radify/geometry.js/issues"
   },
   "homepage": "https://github.com/radify/geometry.js",
   "devDependencies": {
+    "awesome-typescript-loader": "^3.2.3",
     "babel": "^5.8.21",
-    "gulp-babel": "^5.2.1",
-    "gulp-concat": "^2.5.2",
-    "gulp-jasmine": "^2.0.1",
-    "gulp-sourcemaps": "^1.5.2",
-    "gulp-uglify": "^1.2.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "jasmine-node": "^1.14.5",
+    "source-map-loader": "^0.2.1",
+    "typescript": "^2.5.2",
+    "webpack": "^3.6.0",
     "yargs": "^3.7.2"
   }
 }

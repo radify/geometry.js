@@ -2,11 +2,12 @@ import Point from "./Point";
 import Size from "./Size";
 import Box from "./Box";
 
+const _svgTpl = (o: Point, d: Point) => `M ${o.x} ${o.y} L ${d.x} ${d.y}`;
+
 export default class Line {
 
-  constructor(origin: Point, destination: Point) {
-    Object.assign(this, { origin, destination });
-    this._svgTpl = (o, d) => `M ${o.x} ${o.y} L ${d.x} ${d.y}`;
+  constructor(public origin: Point, public destination: Point) {
+    Object.freeze(this);
   }
 
   from(origin: Point): Line {
@@ -77,7 +78,7 @@ export default class Line {
     return (
       box.contains(this.origin) ||
       box.contains(this.destination) ||
-      box.edges().map(edge => edge.crosses(this)).indexOf(true) >= 0
+      box.edges().map((edge: Line) => edge.crosses(this)).indexOf(true) >= 0
     );
   }
 
@@ -114,12 +115,8 @@ export default class Line {
     return [this.origin.x, this.origin.y, this.destination.x, this.destination.y];
   }
 
-  toJSON() {
-    return { origin: this.origin, destination: this.destination };
-  }
-
   toSVG() {
-    return this._svgTpl(this.origin, this.destination);
+    return _svgTpl(this.origin, this.destination);
   }
 
   static fromPairs(x1: number, y1: number, x2: number, y2: number): Line {

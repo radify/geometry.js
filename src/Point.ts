@@ -1,28 +1,28 @@
 export default class Point {
 
-  constructor(_x: number = 0, _y: number = 0) {
-    Object.freeze(Object.assign(this, { _x, _y }));
+  constructor(public x: number = 0, public y: number = 0) {
+    Object.freeze(this);
   }
 
-  add(point): Point {
+  add(point: any): Point {
     var adding = Point.instance(point);
-    return new Point(this._x + adding.x, this._y + adding.y);
+    return new Point(this.x + adding.x, this.y + adding.y);
   }
 
   subtract(point: Point): Point {
-    return new Point(this._x - point._x, this._y - point._y);
+    return new Point(this.x - point.x, this.y - point.y);
   }
 
   product(point: Point): number {
-    return this._x * point._y - this._y * point._x;
+    return this.x * point.y - this.y * point.x;
   }
 
   equals(point: Point): boolean {
-    return this._x === point._x && this._y === point._y;
+    return this.x === point.x && this.y === point.y;
   }
 
   invert(): Point {
-    return new Point(-this._x, -this._y);
+    return new Point(-this.x, -this.y);
   }
 
   distance(point: Point): number {
@@ -42,40 +42,28 @@ export default class Point {
     var y = -(point.y - this.y);
     var x = point.x - this.x;
 
-    var PRECISION = 10;
-    var rad = (y.toFixed(PRECISION) === 0 && x.toFixed(PRECISION) === 0) ? 0 : Math.atan2(y, x);
+    const PRECISION = 10, zero = "0.0000000000"
+    var rad = (y.toFixed(PRECISION) === zero && x.toFixed(PRECISION) === zero) ? 0 : Math.atan2(y, x);
 
     return 180 * ((rad < 0) ? (2 * Math.PI + rad) : rad) / Math.PI;
   }
 
-  get x(): number {
-  	return this._x;
-  }
-
-  get y(): number {
-  	return this._y;
-  }
-
   get transform(): string {
-    return `translate(${this._x}, ${this._y})`;
-  }
-
-  toJSON() {
-    return { x: this._x, y: this._y };
+    return `translate(${this.toString()})`;
   }
 
   toString() {
-    return `${this._x}, ${this._y}`;
+    return `${this.x}, ${this.y}`;
   }
 
-  static instance(x, y): Point {
+  static instance(x: any, y?: number): Point {
     if (x instanceof Point) return x;
     if (x && x.hasOwnProperty('x')) return new Point(x.x, x.y);
     if (x && x.length && x.length >= 2) return new Point(x[0], x[1]);
     return new Point(x, y);
   }
 
-  static fromString(str): Point {
+  static fromString(str: string): Point {
     return new Point(...(str.split(',').map(val => parseInt(val, 10))));
   }
 }
